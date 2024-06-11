@@ -1,0 +1,64 @@
+.InputComp {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.input {
+  padding: 0px 10px;
+  height: 50px;
+  border-radius: 8px;
+  color: var(--theme-black-900);
+  background: var(--theme-gray-50);
+  border: 0.5px solid var(--theme-gray-300);
+}
+.input::placeholder {
+    color: var(--theme-gray-300);
+  }
+    
+.label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--theme-gray-800);
+}
+  
+.iconButton {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.passwordInputWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+  height: 50px;
+  border-radius: 8px;
+  color: var(--theme-black-900);
+  background: var(--theme-gray-50);
+  border: 0.5px solid var(--theme-gray-300);
+  margin-bottom: 20px;
+}
+.passwordInputWrap:focus-within {
+  border: 2px solid var(--theme-black-900);
+}
+.passwordInput {
+  height: 100%;
+  width: 100%;
+  color: var(--theme-black-900);
+  background: transparent;
+  border: none;
+}
+.passwordInput:focus-visible {
+  outline: none;
+}
+
+.passwordInput::placeholder {
+  color: var(--theme-gray-300);
+}
+
+  

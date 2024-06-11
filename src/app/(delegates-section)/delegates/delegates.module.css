@@ -1,0 +1,66 @@
+.form{
+    max-width: 800px;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    padding-inline: 1rem;
+}
+.form>h1{
+    color: var(--theme-green-800)
+}
+.form>p{
+    margin-block: 3rem;
+}
+.grid{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.delegateInput{
+    width: 300px;
+    margin-bottom: 1.4rem;
+    border-color: var(--theme-green-800);
+}
+
+.col{
+display: grid;
+grid-template-columns: 1fr 1fr;
+column-gap: 2rem;
+align-self: center;
+}
+.heading{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--theme-gray-800);
+}
+.width{
+    width: 300px;
+    margin-bottom: 1.4rem;
+    border: .5px solid var(--theme-green-800); 
+    border-radius: 8px;  
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  border-color: black;
+  box-shadow: none;
+}  
+
+.btn{
+    margin: auto;
+    width: 150px !important;
+    border: none;
+}
+
+
+@media (max-width: 50rem){
+.col{
+    display: flex;
+    flex-direction: column;
+}
+}
