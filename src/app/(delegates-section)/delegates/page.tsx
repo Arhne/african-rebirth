@@ -30,8 +30,8 @@ const DelegatesForm = () => {
 
         <div className= {styles.col}>
         {FlightArrangements.map((flight)=>
-            <div>
-                <h3 key={flight.id} className={styles.heading}>{flight.question}</h3>
+            <div key={flight.id}>
+                <h3 className={styles.heading}>{flight.question}</h3>
                 
                   <CustomSelect
                     placeholder = "Please Select"
@@ -44,8 +44,8 @@ const DelegatesForm = () => {
         )}
 
         {HotelArrangements.map((hotel)=>
-            <div>
-                <h3 key={hotel.id} className={styles.heading}>{hotel.question}</h3>
+            <div key={hotel.id}>
+                <h3  className={styles.heading}>{hotel.question}</h3>
                 <div className={styles.content}>
 				
                   <CustomSelect
