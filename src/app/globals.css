@@ -1,13 +1,9 @@
 :root {
-  --theme-gray-60: #f6f4f4;
   --theme-white: #ffffff;
   --theme-black-50: #16161650;
   --theme-black-100: #55534e;
   --theme-black-800: #333843;
   --theme-black-900: #161616;
-  --theme-primary-50: #fffaf1;
-  --theme-primary-100: #ff8a2510;
-  --theme-secondary-100: #ff8a2510;
   --theme-gray-50: #f9f9fc;
   --theme-gray-100: #fbf9f1;
   --theme-gray-300: #858d9d;
