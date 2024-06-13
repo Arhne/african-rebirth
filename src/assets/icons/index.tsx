@@ -1,1 +1,1 @@
-export { AfricanRebirthGrey } from "./tarv";
+export { HamburgerIcon } from "./hamburger-icon";

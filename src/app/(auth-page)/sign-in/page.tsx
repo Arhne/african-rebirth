@@ -21,7 +21,7 @@ export default function Home() {
         <div className={`${styles.bottomImage}`}>
           {/* <AfricanRebirthGrey /> */}
         </div>
-
+        <p className={styles.arrow} onClick={() => router.push("/")}><span>&larr;</span></p>
         <div className={styles.centerContent}>
           <Image 
           src={logo} 
@@ -60,12 +60,12 @@ export default function Home() {
               type = "submit"
               text= "Sign In"
               
-              onClick={() => router.push("admin/delegates-info")}
+              // onClick={() => router.push("admin/delegates-info")}
             />
 
           </div>
         </div>
       </div>
-    
+   
   );
 }

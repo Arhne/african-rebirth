@@ -16,7 +16,18 @@
     gap: 1rem;
     width: 350px;  
 }
-
+.arrow{
+    background-color: var(--theme-green-800);
+    width: 40px;
+    border-radius: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--theme-white);
+    cursor: pointer;
+    margin-bottom: .5rem;
+  }
 .col{
     width: 100%;
    padding: 1rem;
@@ -37,4 +48,5 @@
     display: flex;
     align-self: flex-end;
     cursor: pointer;
+    gap: 1rem;
 }

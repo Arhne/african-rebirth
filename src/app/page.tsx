@@ -1,71 +1,58 @@
 "use client"
-import { CustomInput } from '@/app/components/custom-input'
-import React from 'react';
-import { FlightArrangements, HotelArrangements } from '.';
-import styles from "./page.module.css";
-import { CustomSelect } from '@/app/components/custom-select';
-import Button from '@/app/components/custom-button';
+import React, { useState } from 'react';
+import { details } from '.';
+import { FiEye } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
+import styles from './styles.module.css';
+import Button from '@/app/components/custom-button'
+import QRModal from './(admin-section)/admin/delegates-info/qr-modal';
+import { VscEdit } from 'react-icons/vsc';
+import Navbar  from "./components/navbar/page"
+const DelegateInfo = () => {
 
+const [showQRCode, setShowQRCode] = useState(false)
+const router = useRouter();
 
-const DelegatesForm = () => {
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
-
-  return (
-    <div className={styles.form}>
-            <h1>Travel Plan Itinerary</h1>
-            <p>Welcome, we look forward to having your presence in Nigeria</p>
-        <div className={styles.grid}>
-        <div className= {styles.col}>
-          <CustomInput
-            labelText = "Enter First Name"
-            style = {styles.delegateInput}
-           />
-           <CustomInput
-            labelText = "Enter Last Name"
-            style = {styles.delegateInput}
-           />
-        </div>
-
-        <div className= {styles.col}>
-        {FlightArrangements.map((flight)=>
-            <div key={flight.id}>
-                <h3 className={styles.heading}>{flight.question}</h3>
-                
-                  <CustomSelect
-                    placeholder = "Please Select"
-                    options={flight.options}
-                    onChange={handleChange}
-                    customStyle ={styles.width}
-                  />
-                
-            </div>
-        )}
-
-        {HotelArrangements.map((hotel)=>
-            <div key={hotel.id}>
-                <h3  className={styles.heading}>{hotel.question}</h3>
-                <div className={styles.content}>
-				
-                  <CustomSelect
-                    placeholder = "Please Select"
-                    options={hotel.options}
-                    onChange={handleChange}
-                    customStyle ={styles.width}
-                  />
-                </div>
-            </div>
-        )}
-        </div>
-        </div>
-        <Button 
-        text ="Submit"
-        type='submit'
-        style={styles.btn}
-        />
+  return ( <>
+    <Navbar />
+    <div className={styles.card}>
+      <h1>Delegates Information</h1>
+    
+    <div className={styles.cardBody}>
+    {details.map((detail) => 
+    <div key={detail.id} className={styles.col}>
+      <div  className={styles.view}>
+     <VscEdit onClick={() => router.push(`/sign-in`)} />
+     <FiEye onClick={() => router.push(`admin/delegates-info/view-details`)} />
+     </div>
+     
+     <ul className={styles.flow}>
+        <li>First Name: {detail.fName}</li>
+        <li>Last Name: {detail.lName}</li>
+        <li>Arrival Flight Detail: {detail.arrivalFlight}</li>
+        <li>Hotel Abuja: {detail.hotelAbuja}</li>
+        <li>Hotel Nassarawa: {detail.hotelNass}</li>
+        <li>Hotel Enugu: {detail.hotelEnugu}</li>
+        <li>Hotel Delta: {detail.hotelDelta}</li>
+        <li>Hotel Abia: {detail.hotelAbia}</li>
+        <li>Hotel Akwa-ibom: {detail.hotelAks}</li>
+        <li>Hotel Cross-river: {detail.hotelCrossriver}</li>
+        <li>Local Flight Plan: {detail.departLocalFlight}</li>
+        <li>International Departure Plan: {detail.departureFlight}</li>
+     </ul>
+     <Button 
+      text="View QR Code"
+      type='button'
+      onClick={() => setShowQRCode(true)}
+      />
     </div>
+    )}
+    {showQRCode && (<QRModal onClickClose = {() => setShowQRCode(false)}/>)}
+    </div>
+
+    </div>
+    </>
   )
 }
 
-export default DelegatesForm
+export default DelegateInfo;
