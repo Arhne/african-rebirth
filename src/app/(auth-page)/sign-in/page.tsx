@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import styles from "./style.module.css";
-import { AfricanRebirthGrey, logo } from "@/assets"
+import { logo } from "@/assets"
 import { CustomInput, CustomPasswordInput } from "@/app/components/custom-input";
 import { useRouter } from "next/navigation";
 import Button from "@/app/components/custom-button";
