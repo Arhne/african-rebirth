@@ -14,7 +14,7 @@ const router = useRouter();
 
   return (
     <div className={styles.card}>
-      <h1>Delegate's Information</h1>
+      <h1>Delegates Information</h1>
     
     <div className={styles.cardBody}>
     {details.map((detail) => 
