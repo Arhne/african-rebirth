@@ -2,7 +2,7 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    bottom: -40px;
+    bottom: 0px;
     left: 0px;
     z-index: 2;
     display: flex;
@@ -12,7 +12,7 @@
 }
     .content {
       position: absolute;
-      top: 280px;
+      top: 200px;
       max-width: 500px;
       padding: 40px;
       display: flex;
@@ -41,16 +41,11 @@
         justify-content: center;
         gap: 10px;
       }
-        .closeButton {
-          height: 50px;
-          justify-content: center;
-          width: 100%;
-          text-align: center;
-          border-radius: 8px;
-          font-weight: 600;
-          /* padding-inline: 10px !important; */
-          color: #ffff;
-          background: var(--theme-green-900);
+        .btn{
+          border: none;
+        }
+        .btn:hover{
+          background-color: var(--theme-green-800);
         }
         
       

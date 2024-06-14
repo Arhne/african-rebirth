@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: .9rem;
     padding-inline: 1rem;
+    
 }
 .form>h1{
     color: var(--theme-green-800)
@@ -14,8 +15,7 @@
 }
 .grid{
     display: flex;
-    flex-direction: column;
-   
+    flex-direction: column;  
 }
 
 .delegateInput{
@@ -24,18 +24,6 @@
     border-color: var(--theme-green-800);
 }
 
-.col{
-display: grid;
-grid-template-columns: 1fr 1fr;
-column-gap: 2rem;
-align-self: center;
-}
-.heading{
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
-    color: var(--theme-gray-800);
-}
 .width{
     width: 300px;
     margin-bottom: 1.4rem;
@@ -52,15 +40,10 @@ align-self: center;
 }  
 
 .btn{
-    margin: auto;
     width: 150px !important;
     border: none;
 }
 
-
-@media (max-width: 50rem){
-.col{
-    display: flex;
-    flex-direction: column;
-}
+.marginbtm{
+    margin-bottom: .5rem;
 }

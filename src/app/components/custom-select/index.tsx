@@ -7,6 +7,7 @@ export type SelectProps = {
 	placeholder?: string;
 	onChange?: (selectedValue: string) => void;
 	customStyle?:  string;
+	labelText?: string;
 };
 
 const style = {
@@ -18,10 +19,12 @@ export const CustomSelect: React.FC<SelectProps> = ({
 	options,
 	onChange,
 	placeholder,
-	customStyle
+	customStyle,
+	labelText
 }) => {
 	return (
 		<div className={styles.SelectComp}>
+			 {labelText && <label className={styles.label}>{labelText}</label>}
 			<Select
 				placeholder={placeholder}
 				style={style}

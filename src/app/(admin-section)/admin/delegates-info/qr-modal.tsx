@@ -8,12 +8,20 @@ const QRModal = ({onClickClose}: any) => {
   return (
     <div className={styles.qrModal}>
       <div className={styles.content}>
-        <div className={styles.textContent}>
-        <Image src="" height={150} width={180} alt="" className={styles.Image} />
+      <div className={styles.textContent}>
+        <Image src="" height={100} width={100} alt="passport" className={styles.Image} />
         </div>
         <div className={styles.buttonFlex}>
-          <Button text="Close" className={styles.closeButton} onClick={onClickClose} />
-          <Button text="Download" />
+          <Button text="Download" style={styles.btn}/>
+        </div>
+
+
+        <div className={styles.textContent}>
+        <Image src="" height={150} width={180} alt="qrcode" className={styles.Image} />
+        </div>
+        <div className={styles.buttonFlex}>
+          <Button text="Close" style={styles.btn} onClick={onClickClose} />
+          <Button text="Download" style={styles.btn}/>
         </div>
       </div>
     </div>

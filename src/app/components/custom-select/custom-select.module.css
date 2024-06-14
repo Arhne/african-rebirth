@@ -3,5 +3,10 @@
     flex-direction: column;
     gap: 6px;
 }
-
+.label{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--theme-gray-800);
+}
 

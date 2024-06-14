@@ -15,15 +15,7 @@ const ViewSingleDelegateInfo = () => {
     <div key={detail.id} className={styles.col}>
       <p className={styles.name}>{detail.fName} {detail.lName}</p>
      <ul className={styles.flow}>
-        <li>Hotel Abuja: {detail.hotelAbuja}</li>
-        <li>Hotel Nassarawa: {detail.hotelNass}</li>
-        <li>Hotel Enugu: {detail.hotelEnugu}</li>
-        <li>Hotel Delta: {detail.hotelDelta}</li>
-        <li>Hotel Abia: {detail.hotelAbia}</li>
-        <li>Hotel Akwa-ibom: {detail.hotelAks}</li>
-        <li>Hotel Cross-river: {detail.hotelCrossriver}</li>
-        <li>Local Flight Plan: {detail.departLocalFlight}</li>
-        <li>International Departure Plan: {detail.departureFlight}</li>
+        <li>Plan: {detail.travelPlan}</li>
      </ul>
     </div>
     )}
