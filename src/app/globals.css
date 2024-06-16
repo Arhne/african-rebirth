@@ -60,3 +60,9 @@ h3 {
   font-size: 14px;
   line-height: 17.57px;
 }
+a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 17.57px;
+}
