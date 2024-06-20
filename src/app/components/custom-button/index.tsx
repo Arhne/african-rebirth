@@ -10,6 +10,7 @@ interface ButtonProp {
   isLoading?: boolean;
   style?: string;
   type?: "submit" | "reset" | "button";
+  disabled?: boolean;
 }
 
 const Button = ({ 
@@ -18,9 +19,10 @@ const Button = ({
     isLoading, 
     style,
     type,
+    disabled
   }: ButtonProp) => {
   return (
-    <button className={`${styles.ButtonComp} ${style}`} onClick={onClick} type={type} >
+    <button disabled={disabled} className={`${styles.ButtonComp} ${style}`} onClick={onClick} type={type} >
       {isLoading ? (
         <span className={styles.loader}>
           <PiSpinnerGapThin className={styles.loader} size={25} />

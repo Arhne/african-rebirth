@@ -9,6 +9,8 @@ interface IFormInput {
   type?: string;
   style?: string;
   className?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 }
 
 interface IFormInputNumber {
@@ -23,6 +25,7 @@ export const CustomInput = ({
   value,
   type,
   style,
+  onChange,
 }: IFormInput) => {
   return (
     <div className={styles.InputComp}>
@@ -32,6 +35,7 @@ export const CustomInput = ({
         className={`${styles.input} ${style}`}
         placeholder={placeholder}
         value = {value}
+        onChange={onChange}
       />
     </div>
   );
@@ -40,6 +44,7 @@ export const CustomInput = ({
 export const CustomPasswordInput = ({
   placeholder,
   labelText,
+  onChange,
 }: IFormInput) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -50,7 +55,7 @@ export const CustomPasswordInput = ({
           type={showPassword ? "text" : "password"}
           className={styles.passwordInput}
           placeholder={placeholder}
-       
+        onChange={onChange}
         />
         <button
           className={styles.iconButton}

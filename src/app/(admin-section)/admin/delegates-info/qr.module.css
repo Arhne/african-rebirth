@@ -11,8 +11,6 @@
     background: var(--theme-black-50);
 }
     .content {
-      position: absolute;
-      top: 200px;
       max-width: 500px;
       padding: 40px;
       display: flex;

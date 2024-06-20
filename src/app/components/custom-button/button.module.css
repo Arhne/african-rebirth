@@ -7,6 +7,7 @@
     border-radius: 8px;
     color: var(--theme-white);
     text-align: center;
+    cursor: pointer;
 }
 @-moz-keyframes spin {
     100% {
