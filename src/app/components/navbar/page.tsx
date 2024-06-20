@@ -47,16 +47,13 @@ const Navbar = () => {
             <Link
               key={navbar.link}
               href={navbar.path}
-              className={menu ? `${styles.mobilelink}` : `${styles.link}`}>
+              className={menu && `${styles.mobilelink}`}>
               {navbar.link}
             </Link>
           ))}
         </div>
       ) : (
-        ""
-      )}
-
-      <div className={styles.navListFlex}>
+        <div className={styles.navListFlex}>
         {navbars.map((navbar) => (
           <Link
             key={navbar.link}
@@ -66,6 +63,9 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
+      )}
+
+      
     </nav>
   );
 };
