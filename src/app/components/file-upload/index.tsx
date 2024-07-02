@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import style from "./styles.module.scss";
+import style from "./file-upload.module.css";
 import { FileUploadIcon } from "@/assets";
 import Image from "next/image";
 
