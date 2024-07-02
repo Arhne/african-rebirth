@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Button from "@/app/components/custom-button";
 import QRModal from "@/app/(admin-section)/admin/delegates-info/qr-modal"
 import { VscEdit } from "react-icons/vsc";
-import { EditModal } from "@/app/(admin-section)/admin/delegates-info/edit-modal"
+import EditModal from "@/app/(admin-section)/admin/delegates-info/edit-modal"
 
 const ViewSingleDelegateInfo = () => {
   const router = useRouter();
