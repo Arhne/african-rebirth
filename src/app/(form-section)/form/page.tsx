@@ -17,10 +17,12 @@ import Navbar from "@/app/components/navbar/page";
 import { useRouter } from "next/navigation";
 
 interface IValues {
+  prefix: string;
   firstname: string;
   lastname: string;
   itineraryPlan: string;
   email: string;
+  
 }
 
 const DelegatesForm = () => {
@@ -30,6 +32,11 @@ const DelegatesForm = () => {
     { value: "silver", label: "Silver" },
     { value: "bronze", label: "Bronze" },
   ];
+  const prefix = [
+    { value: "mr", label: "Mr" },
+    { value: "mrs", label: "Mrs" },
+    { value: "miss", label: "Miss" },
+  ];
 
   const [createDelegates, { isLoading }] = useCreateDelegatesMutation();
   const [uploadPassport, { isLoading: isUploading }] =
@@ -38,6 +45,7 @@ const DelegatesForm = () => {
   const [submitSuccessful, setSubmitSuccessful] = useState(false);
 
   const initialValues: IValues = {
+    prefix: "",
     firstname: "",
     lastname: "",
     itineraryPlan: "",
@@ -85,7 +93,7 @@ const DelegatesForm = () => {
 
   return (
     <>
-      <Navbar />
+      
 
       <div className={styles.form}>
         <div className={styles.headers}>
@@ -94,6 +102,13 @@ const DelegatesForm = () => {
         </div>
 
         <div className={styles.grid}>
+          <CustomSelect
+            labelText="Select Prefix"
+            placeholder="Please Select"
+            options={prefix}
+            onChange={handleChange("prefix")}
+            customStyle={styles.width}
+          />
           <CustomInput
             labelText="Enter First Name"
             style={styles.delegateInput}

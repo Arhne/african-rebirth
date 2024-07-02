@@ -86,7 +86,7 @@ export default function Home() {
             type="submit"
             text="Sign In"
             isLoading={isLoading}
-            // onClick={() => router.push("admin/delegates-info")}
+            // onClick={() => router.push(`admin/delegates-info/view-details`)}
           />
         </div>
       </form>

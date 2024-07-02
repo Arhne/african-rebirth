@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+
 import { details } from ".";
 import { FiEye } from "react-icons/fi";
 import { useRouter } from "next/navigation";
@@ -13,23 +13,21 @@ import {
   useGetDelegateByIdQuery,
   useGetDelegatesQuery,
 } from "@/redux/api/delegates";
+import { AiOutlineMore } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { QRButton } from "./components/qr-button";
+import { BsQrCodeScan } from "react-icons/bs";
 
 const DelegateInfo = () => {
-  const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);
+ 
   const router = useRouter();
 
   const { data: delegatesData, isLoading } = useGetDelegatesQuery();
+
+
   return (
     <>
-      {!!showQRCode && (
-        <QRModal
-          userName={`${showQRCode.firstname} ${showQRCode.lastname} `}
-          showModal={!!showQRCode}
-          passport={showQRCode.passport}
-          codeUrl={showQRCode.qrcode}
-          onClickClose={() => setShowQRCode(null)}
-        />
-      )}
+      
       <Navbar />
       <div className={styles.card}>
         <h1>Delegates</h1>
@@ -38,12 +36,9 @@ const DelegateInfo = () => {
           {delegatesData?.data.map((detail, index) => (
             <div key={index} className={styles.col}>
               <div className={styles.view}>
-                <VscEdit onClick={() => router.push(`/sign-in`)} />
-                <FiEye
-                  onClick={() =>
-                    router.push(`admin/delegates-info/view-details`)
-                  }
-                />
+                <RiDeleteBin6Line />
+                <FiEye onClick={() => router.push(`/sign-in`)} />
+                
               </div>
 
               <div className={styles.evencol}>
@@ -52,6 +47,9 @@ const DelegateInfo = () => {
                     Name: {detail.firstname} {detail.lastname}
                   </li>
                   <li>Plan: {detail.itineraryPlan}</li>
+                  <li>Location: 
+                    {/* {`${detail.prefix} ${detail.firstname} + "is currently" + ${detail.activitystatus} ${detail.locationstatus}`} */}
+                  </li>
                 </ul>
 
                 <Image
@@ -62,15 +60,15 @@ const DelegateInfo = () => {
                   className={styles.image}
                 />
               </div>
-              <Button
-                text="View QR Code"
-                type="button"
-                style={styles.btn}
-                onClick={() => setShowQRCode(detail)}
-              />
+             
             </div>
           ))}
         </div>
+        <QRButton
+            onClick={() => router.push("/")}
+            text={"Scan code"}
+            icon={<BsQrCodeScan color="white" size={25} />}
+          />
       </div>
     </>
   );
