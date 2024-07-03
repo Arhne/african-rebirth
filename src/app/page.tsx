@@ -5,7 +5,7 @@ import { FiEye } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import Button from "@/app/components/custom-button";
-import QRModal from "./(admin-section)/admin/delegates-info/qr-modal";
+import QRModal from "./(admin-section)/admin/qr-modal";
 import { VscEdit } from "react-icons/vsc";
 import Navbar from "./components/navbar/page";
 import Image from "next/image";
@@ -37,7 +37,7 @@ const DelegateInfo = () => {
             <div key={index} className={styles.col}>
               <div className={styles.view}>
                 <RiDeleteBin6Line />
-                <FiEye onClick={() => router.push(`/sign-in`)} />
+                <FiEye onClick={() => router.push(`/admin/delegates-info/${detail.id}`)} />
                 
               </div>
 
@@ -48,7 +48,7 @@ const DelegateInfo = () => {
                   </li>
                   <li>Plan: {detail.itineraryPlan}</li>
                   <li>Location: 
-                    {/* {`${detail.prefix} ${detail.firstname} + "is currently" + ${detail.activitystatus} ${detail.locationstatus}`} */}
+                  {detail?.inAttendance ? "In Conference" : "Hotel"}
                   </li>
                 </ul>
 
@@ -65,7 +65,7 @@ const DelegateInfo = () => {
           ))}
         </div>
         <QRButton
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/product-scanner")}
             text={"Scan code"}
             icon={<BsQrCodeScan color="white" size={25} />}
           />

@@ -84,14 +84,14 @@ const EditModal: FC<IEditModal> = ({
           <CustomSelect
             labelText="Activity status"
             placeholder="Please Select"
-            options={status.activitystatus}
+            options={status[0].activitystatus!}
             onChange={()=>{}}
             customStyle={styles.width}
           />
           <CustomSelect
             labelText="What is the location status"
             placeholder="Please Select"
-            options={options.locationstatus}
+            options={status[0].locationstatus!}
             onChange={()=>{}}
             customStyle={styles.width}
           />
