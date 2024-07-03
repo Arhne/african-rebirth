@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { details } from "../../..";
 import styles from "@/app/styles.module.css";
 import { useRouter } from "next/navigation";
 import Button from "@/app/components/custom-button";
-import QRModal from "@/app/(admin-section)/admin/qr-modal";
 import { VscEdit } from "react-icons/vsc";
-import EditModal from "@/app/(admin-section)/admin/edit-modal";
 import { useGetDelegateByIdQuery } from "@/redux/api/delegates";
+import { EditModal, QRModal } from "./components";
 
 const ViewSingleDelegateInfo = ({
   params,
@@ -17,6 +15,7 @@ const ViewSingleDelegateInfo = ({
   const [pageName, pageId] = params.singleDelegateInfo;
   const { data } = useGetDelegateByIdQuery(pageId);
   console.log("WAHAHA", pageId);
+  console.log("WAHAHA", pageName);
   const detail = data?.data;
   const router = useRouter();
   const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);

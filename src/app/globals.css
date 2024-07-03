@@ -66,3 +66,9 @@ a {
   font-size: 1.4rem;
   line-height: 17.57px;
 }
+.loading {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}

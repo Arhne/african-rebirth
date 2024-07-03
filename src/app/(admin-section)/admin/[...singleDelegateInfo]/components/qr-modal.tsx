@@ -13,7 +13,7 @@ interface IModal {
   userName: string;
 }
 
-const QRModal: FC<IModal> = ({
+export const QRModal: FC<IModal> = ({
   onClickClose,
   codeUrl,
   passport,
@@ -91,4 +91,3 @@ const QRModal: FC<IModal> = ({
   );
 };
 
-export default QRModal;

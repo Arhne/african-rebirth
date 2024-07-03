@@ -14,7 +14,7 @@ interface IEditModal {
   userName: string;
 }
 
-const EditModal: FC<IEditModal> = ({
+export const EditModal: FC<IEditModal> = ({
   onClickClose,
   codeUrl,
   passport,
@@ -53,10 +53,7 @@ const EditModal: FC<IEditModal> = ({
   return (
     <Modal open={showModal} centered footer={[]} onCancel={onClickClose}>
       <div className={styles.content}>
-        <div className={styles.textContent}>
-        <FileUploadComp header="Passport" title="Logo" onChange={()=>{}} />
-        <FileUploadComp header="Qr Code" title="Cover Image"  onChange={()=>{}}/>
-        </div>
+       
         
         <div>
         <CustomInput
@@ -69,18 +66,18 @@ const EditModal: FC<IEditModal> = ({
             labelText="Enter Last Name"
             style={styles.delegateInput}
           />
-          <CustomInput
+          {/* <CustomInput
             // onChange={handleChange("email")}
             labelText="Enter Email Address"
             style={styles.delegateInput}
-          />
-           <CustomSelect
+          /> */}
+           {/* <CustomSelect
             labelText="Please select your travel itinerary plan"
             placeholder="Please Select"
             options={options}
             onChange={()=>{}}
             customStyle={styles.width}
-          />
+          /> */}
           <CustomSelect
             labelText="Activity status"
             placeholder="Please Select"
@@ -91,7 +88,7 @@ const EditModal: FC<IEditModal> = ({
           <CustomSelect
             labelText="What is the location status"
             placeholder="Please Select"
-            options={status[0].locationstatus!}
+            options={status[1].locationstatus!}
             onChange={()=>{}}
             customStyle={styles.width}
           />
@@ -99,11 +96,10 @@ const EditModal: FC<IEditModal> = ({
 
         <div className={styles.buttonFlex}>
           <Button text="Save" style={styles.btn} onClick={onClickClose} />
-          <Button text="Cancel" style={styles.btn} />
+          <Button onClick={onClickClose} text="Cancel" style={styles.btn} />
         </div>
       </div>
     </Modal>
   );
 };
 
-export default EditModal;

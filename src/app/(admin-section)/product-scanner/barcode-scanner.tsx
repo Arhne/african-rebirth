@@ -14,7 +14,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError }) => {
 		const html5QrcodeScanner = new Html5QrcodeScanner(
 			"barcode-scanner",
 			{
-				fps: 10,
+				fps: 20,
 				qrbox: { width: 250, height: 250 },
 				showTorchButtonIfSupported: true,
 				showZoomSliderIfSupported: true,

@@ -1,12 +1,8 @@
 "use client";
 
-import { details } from ".";
 import { FiEye } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
-import Button from "@/app/components/custom-button";
-import QRModal from "./(admin-section)/admin/qr-modal";
-import { VscEdit } from "react-icons/vsc";
 import Navbar from "./components/navbar/page";
 import Image from "next/image";
 import {
@@ -17,12 +13,21 @@ import { AiOutlineMore } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { QRButton } from "./components/qr-button";
 import { BsQrCodeScan } from "react-icons/bs";
+import { Loader } from "./components/loader";
 
 const DelegateInfo = () => {
  
   const router = useRouter();
 
   const { data: delegatesData, isLoading } = useGetDelegatesQuery();
+
+  if(isLoading) {
+    return (
+      <div className="loading">
+        <Loader isLoading />
+      </div>
+    )
+  }
 
 
   return (
@@ -37,7 +42,7 @@ const DelegateInfo = () => {
             <div key={index} className={styles.col}>
               <div className={styles.view}>
                 <RiDeleteBin6Line />
-                <FiEye onClick={() => router.push(`/admin/delegates-info/${detail.id}`)} />
+                <FiEye onClick={() => router.push(`/admin/view/${detail.id}`)} />
                 
               </div>
 

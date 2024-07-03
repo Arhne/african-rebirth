@@ -1,0 +1,25 @@
+.loader {
+    margin: auto;
+ 
+
+    -webkit-animation: spin 3s linear infinite; /* Safari */
+    -moz-animation: spin 3s linear infinite; /* Old Firefox */
+    animation: spin 3s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+/* Old Firefox */
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
