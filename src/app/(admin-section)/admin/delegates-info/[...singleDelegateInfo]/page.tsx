@@ -8,7 +8,14 @@ import QRModal from "@/app/(admin-section)/admin/delegates-info/qr-modal"
 import { VscEdit } from "react-icons/vsc";
 import EditModal from "@/app/(admin-section)/admin/delegates-info/edit-modal"
 
-const ViewSingleDelegateInfo = () => {
+const ViewSingleDelegateInfo = ({
+  params,
+}: {
+  params: { singleDelegateInfo: string[] };
+}) => {
+  const [pageName, pageId] = params.singleDelegateInfo;
+  const { data } = useGetDelegateByIdQuery(pageId);
+  const detail = data?.data;
   const router = useRouter();
   const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);
   const [showEditModal, setShowEditModal] = useState(false);

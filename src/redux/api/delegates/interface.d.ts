@@ -15,4 +15,6 @@ interface IDelegates {
   type: string;
   itineraryPlan: string;
   lastname: string;
+  inAttendance: boolean;
+
 }
