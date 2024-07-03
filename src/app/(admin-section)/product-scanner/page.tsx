@@ -1,6 +1,6 @@
 "use client";
 
-import ProductScanner from "./product-scanner";
+import {ProductScanner} from "./product-scanner";
 
 const ProductScannerPage = () => {
   return (

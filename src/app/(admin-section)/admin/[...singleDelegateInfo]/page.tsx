@@ -6,6 +6,7 @@ import Button from "@/app/components/custom-button";
 import { VscEdit } from "react-icons/vsc";
 import { useGetDelegateByIdQuery } from "@/redux/api/delegates";
 import { EditModal, QRModal } from "./components";
+import { Loader } from "@/app/components/loader";
 
 const ViewSingleDelegateInfo = ({
   params,
@@ -13,14 +14,18 @@ const ViewSingleDelegateInfo = ({
   params: { singleDelegateInfo: string[] };
 }) => {
   const [pageName, pageId] = params.singleDelegateInfo;
-  const { data } = useGetDelegateByIdQuery(pageId);
-  console.log("WAHAHA", pageId);
-  console.log("WAHAHA", pageName);
+  const { data, isLoading } = useGetDelegateByIdQuery(pageId);
   const detail = data?.data;
   const router = useRouter();
   const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);
   const [showEditModal, setShowEditModal] = useState<IDelegates | null>(null);
-
+  if(isLoading) {
+    return (
+      <div className="loading">
+        <Loader isLoading />
+      </div>
+    )
+  }
   return (
     <>
       {!!showQRCode && (

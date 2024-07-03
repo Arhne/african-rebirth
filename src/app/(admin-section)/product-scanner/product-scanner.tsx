@@ -3,10 +3,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import style from "./style.module.css";
 import BarcodeScanner from "./barcode-scanner";
 
-const ProductScanner: React.FC = () => {
-	const searchParam = useSearchParams();
+export const ProductScanner: React.FC = () => {
 	const router = useRouter();
-	const storeId = searchParam.get("id");
 
 	const handleScan = (decodedText: string, decodedResult: any) => {
 		const valueObject: IDelegates = JSON.parse(decodedResult.decodedText)
@@ -45,4 +43,3 @@ const ProductScanner: React.FC = () => {
 	);
 };
 
-export default ProductScanner;

@@ -35,8 +35,16 @@ const delegatesApi = baseApi.injectEndpoints({
         method: "GET",
       }),
       providesTags: [{type: tagTypes.DELEGATES}]
+    }),
+    deleteDelegates: builder.mutation<Response<IDelegates>, string>({
+      query: (id) => ({
+        url: `/user/delete`,
+        method: "DELETE",
+        data: id,
+      }),
+      invalidatesTags: [{type: tagTypes.DELEGATES}]
     })
   }),
 });
 
-export const { useCreateDelegatesMutation, useUploadPassportMutation, useGetDelegateByIdQuery, useLazyGetDelegateByIdQuery, useGetDelegatesQuery } = delegatesApi;
+export const { useCreateDelegatesMutation, useUploadPassportMutation, useGetDelegateByIdQuery, useLazyGetDelegateByIdQuery, useGetDelegatesQuery, useDeleteDelegatesMutation } = delegatesApi;
