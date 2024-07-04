@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getCookie, setCookie } from 'cookies-next';
-import { RootState } from '../store';
-import { Constants } from '../enum';
-import { toast } from 'react-toastify';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getCookie, setCookie } from "cookies-next";
+import { RootState } from "../store";
+import { Constants } from "../enum";
+import { toast } from "react-toastify";
 
 // export interface IUser {
 //   firstName: string;
@@ -18,9 +18,11 @@ interface AuthState {
 }
 
 const getUserFromCookie = (): ILoginResponse | null => {
-  const userString = sessionStorage.getItem(Constants.USER)?.toString();
-  if (userString) {
-    return JSON.parse(userString);
+  if (typeof sessionStorage !== "undefined") {
+    const userString = sessionStorage.getItem(Constants.USER)?.toString();
+    if (userString) {
+      return JSON.parse(userString);
+    }
   }
   return null;
 };
@@ -31,7 +33,7 @@ const initialState: AuthState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<ILoginResponse>) {
