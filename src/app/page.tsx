@@ -23,7 +23,7 @@ const DelegateInfo = () => {
     if(isAdmin) {
       router.push(`/admin/add/${detail.id}`);
     } else {
-      router.push('/form')
+      router.push('/sign-in')
     }
   }
 
