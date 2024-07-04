@@ -18,6 +18,7 @@ const ViewSingleDelegateInfo = ({
   const { data, isLoading } = useGetDelegateByIdQuery(pageId);
   const detail = data?.data;
   const router = useRouter();
+  const adminValue = isAdmin();
   const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);
   const [showEditModal, setShowEditModal] = useState<IDelegates | null>(null);
   if (isLoading) {
@@ -54,7 +55,7 @@ const ViewSingleDelegateInfo = ({
         </p>
         <div className={styles.cardBody}>
           <div className={styles.col}>
-            {isAdmin && (
+            {adminValue && (
               <div className={styles.view}>
                 <VscEdit onClick={() => setShowEditModal(detail!)} />
               </div>

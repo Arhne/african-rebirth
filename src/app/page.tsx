@@ -18,9 +18,9 @@ const DelegateInfo = () => {
   const router = useRouter();
 
   const { data: delegatesData, isLoading } = useGetDelegatesQuery();
-
+  const adminValue = isAdmin()
   const handleViewDelegate = (detail: IDelegates) => {
-    if(isAdmin) {
+    if(adminValue) {
       router.push(`/admin/add/${detail.id}`);
     } else {
       router.push('/sign-in')
@@ -36,7 +36,7 @@ const DelegateInfo = () => {
   }
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className={styles.card}>
         <h1>Delegates</h1>
@@ -44,7 +44,7 @@ const DelegateInfo = () => {
           {delegatesData?.data.map((detail, index) => (
             <div key={index} className={styles.col}>
               <div className={styles.view}>
-                {isAdmin && (
+                {adminValue && (
                   <div>
                     <RiDeleteBin6Line />
                   </div>
@@ -76,7 +76,7 @@ const DelegateInfo = () => {
             </div>
           ))}
         </div>
-        {isAdmin && (
+        {adminValue && (
           <QRButton
             onClick={() => router.push("/product-scanner")}
             text={"Scan code"}
@@ -84,7 +84,7 @@ const DelegateInfo = () => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -12,9 +12,12 @@ import { useLoginAdminMutation } from "@/redux/api/admins";
 import { useFormik } from "formik";
 import { setCookie } from "cookies-next";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUser } from "@/redux/slices";
 
 export default function Home() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const [adminLogin, { isLoading }] = useLoginAdminMutation();
 
@@ -27,7 +30,17 @@ export default function Home() {
     adminLogin(values)
       .unwrap()
       .then((res) => {
-        setCookie("african_token", res.data.token);
+        dispatch(setUser(res.data));
+        sessionStorage.setItem("africanToken",res.data.token)
+
+        console.log(res.data)
+
+        // setCookie("africanToken", res.data.token, {
+        //   secure: true,
+        //   sameSite: "strict",
+        //   path: "/",
+        //   maxAge: 86400,
+        // });
         toast.success("Login successful");
         router.push("/");
       })

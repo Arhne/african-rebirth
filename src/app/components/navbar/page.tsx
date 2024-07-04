@@ -10,7 +10,7 @@ import { isAdmin } from "@/utils";
 const Navbar = () => {
   const router = useRouter();
   const [menu, setMenu] = useState(false);
-
+  const adminValue = isAdmin()
   const navbars = [
     {
       link: "Home",
@@ -20,7 +20,7 @@ const Navbar = () => {
       link: "Form",
       path: "/form",
     },
-    ...(isAdmin
+    ...(adminValue
       ? [
           {
             link: "Tracking",

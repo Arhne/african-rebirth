@@ -92,8 +92,8 @@ const DelegatesForm = () => {
   };
 
   return (
-    <>
-      
+    <div>
+      <Navbar />
 
       <div className={styles.form}>
         <div className={styles.headers}>
@@ -169,7 +169,7 @@ const DelegatesForm = () => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,10 @@
-import { hasCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 
 
-export const isAdmin =  hasCookie('african_token')
+
+
+export const isAdmin = () => {
+  const userType =
+       sessionStorage.getItem("africanToken")
+  return userType ? true : false;
+};
