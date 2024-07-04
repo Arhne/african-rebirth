@@ -7,6 +7,7 @@ import { VscEdit } from "react-icons/vsc";
 import { useGetDelegateByIdQuery } from "@/redux/api/delegates";
 import { EditModal, QRModal } from "./components";
 import { Loader } from "@/app/components/loader";
+import { isAdmin } from "@/utils";
 
 const ViewSingleDelegateInfo = ({
   params,
@@ -19,12 +20,12 @@ const ViewSingleDelegateInfo = ({
   const router = useRouter();
   const [showQRCode, setShowQRCode] = useState<IDelegates | null>(null);
   const [showEditModal, setShowEditModal] = useState<IDelegates | null>(null);
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div className="loading">
         <Loader isLoading />
       </div>
-    )
+    );
   }
   return (
     <>
@@ -53,9 +54,12 @@ const ViewSingleDelegateInfo = ({
         </p>
         <div className={styles.cardBody}>
           <div className={styles.col}>
-            <div className={styles.view}>
-              <VscEdit onClick={() => setShowEditModal(detail!)} />
-            </div>
+            {isAdmin && (
+              <div className={styles.view}>
+                <VscEdit onClick={() => setShowEditModal(detail!)} />
+              </div>
+            )}
+
             <p className={styles.name}>
               {detail?.firstname} {detail?.lastname}
             </p>
@@ -63,7 +67,7 @@ const ViewSingleDelegateInfo = ({
               <li>Plan: {detail?.itineraryPlan}</li>
               <li>Email: {detail?.email}</li>
               <li>
-                Status: {detail?.inAttendance ? "In Conference" : "Hotel"}
+                Status: {detail?.inAttendance ? "In Conference" : "In-Transit"}
               </li>
             </ul>
 

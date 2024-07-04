@@ -5,10 +5,12 @@ import styles from "./navbar.module.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { HamburgerIcon, logo } from "@/assets";
+import { isAdmin } from "@/utils";
 
 const Navbar = () => {
   const router = useRouter();
   const [menu, setMenu] = useState(false);
+
   const navbars = [
     {
       link: "Home",
@@ -18,10 +20,14 @@ const Navbar = () => {
       link: "Form",
       path: "/form",
     },
-    {
-      link: "Tracking",
-      path: "/",
-    },
+    ...(isAdmin
+      ? [
+          {
+            link: "Tracking",
+            path: "/",
+          },
+        ]
+      : []),
   ];
   return (
     <nav className={styles.flex}>
@@ -54,18 +60,16 @@ const Navbar = () => {
         </div>
       ) : (
         <div className={styles.navListFlex}>
-        {navbars.map((navbar) => (
-          <Link
-            key={navbar.link}
-            href={navbar.path}
-            className={menu ? `${styles.mobilelink}` : `${styles.link}`}>
-            {navbar.link}
-          </Link>
-        ))}
-      </div>
+          {navbars.map((navbar) => (
+            <Link
+              key={navbar.link}
+              href={navbar.path}
+              className={menu ? `${styles.mobilelink}` : `${styles.link}`}>
+              {navbar.link}
+            </Link>
+          ))}
+        </div>
       )}
-
-      
     </nav>
   );
 };

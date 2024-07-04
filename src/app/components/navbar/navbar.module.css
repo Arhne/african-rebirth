@@ -1,6 +1,7 @@
 .flex {
     background: var(--theme-green-200);
-    position: relative;
+    position: sticky;
+    top: 0;
     padding: 20px;
     display: flex;
     align-items: center;

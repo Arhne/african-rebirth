@@ -27,7 +27,7 @@ export default function Home() {
     adminLogin(values)
       .unwrap()
       .then((res) => {
-        setCookie("token", res.data.token);
+        setCookie("african_token", res.data.token);
         toast.success("Login successful");
         router.push("/");
       })
