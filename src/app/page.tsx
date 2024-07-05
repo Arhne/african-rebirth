@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import Navbar from "./components/navbar/page";
 import Image from "next/image";
 import {
+  useDeleteDelegatesMutation,
   useGetDelegatesQuery,
 } from "@/redux/api/delegates";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -15,11 +16,13 @@ import { Loader } from "./components/loader";
 import { isAdmin } from "@/utils";
 import { useState } from "react";
 import { DeleteModal } from "./components/delete-modal";
+import { toast } from "react-toastify";
 
 const DelegateInfo = () => {
   const router = useRouter();
-  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState<IDelegates | null>(null);
   const { data: delegatesData, isLoading } = useGetDelegatesQuery();
+  const [deleteDelegates, {isLoading: isDeleting}] = useDeleteDelegatesMutation()
   const adminValue = isAdmin()
   const handleViewDelegate = (detail: IDelegates) => {
     if(adminValue) {
@@ -38,14 +41,14 @@ const DelegateInfo = () => {
   }
 
   const handleDelete = (id: any) => {
-    deleteShoppingTips(id)
+    deleteDelegates(id)
       .unwrap()
       .then((result) => {
-        showSuccessToast(result?.message);
-        setDeleteModal(false);
+        toast.success("delete successful");
+        setDeleteModal(null);
       })
       .catch((error) => {
-        showErrorToast(error?.data?.message[0]);
+        toast.error(error?.data?.message[0]);
       });
   };
 
@@ -62,8 +65,7 @@ const DelegateInfo = () => {
                   <div>
                     <RiDeleteBin6Line 
                       onClick={() => {
-                        setDeleteModal(true);
-                        setShoppingTipsData({ id: id, title: payload.title });
+                        setDeleteModal(detail);
                       }}
                     />
                   </div>
@@ -103,16 +105,15 @@ const DelegateInfo = () => {
           />
         )}
       </div>
-      {deleteModal && (
+      {!!deleteModal && (
       <DeleteModal
         deleteTitle={"Delegate"}
         deleteItem={"delegates info"}
         onClickDelete={() => {
-          handleDelete(shoppingTipsData.id);
-          setDeleteModal(false);
+          handleDelete(deleteModal.id);
         }}
-        onClickClose={() => setDeleteModal(false)}
-        isLoading={isDeletingShoppingTips}
+        onClickClose={() => setDeleteModal(null)}
+        isLoading={isDeleting}
       />
     )}
     </div>
