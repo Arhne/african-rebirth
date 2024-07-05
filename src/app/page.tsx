@@ -13,10 +13,12 @@ import { QRButton } from "./components/qr-button";
 import { BsQrCodeScan } from "react-icons/bs";
 import { Loader } from "./components/loader";
 import { isAdmin } from "@/utils";
+import { useState } from "react";
+import { DeleteModal } from "./components/delete-modal";
 
 const DelegateInfo = () => {
   const router = useRouter();
-
+  const [deleteModal, setDeleteModal] = useState(false);
   const { data: delegatesData, isLoading } = useGetDelegatesQuery();
   const adminValue = isAdmin()
   const handleViewDelegate = (detail: IDelegates) => {
@@ -35,6 +37,18 @@ const DelegateInfo = () => {
     );
   }
 
+  const handleDelete = (id: any) => {
+    deleteShoppingTips(id)
+      .unwrap()
+      .then((result) => {
+        showSuccessToast(result?.message);
+        setDeleteModal(false);
+      })
+      .catch((error) => {
+        showErrorToast(error?.data?.message[0]);
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -46,7 +60,12 @@ const DelegateInfo = () => {
               <div className={styles.view}>
                 {adminValue && (
                   <div>
-                    <RiDeleteBin6Line />
+                    <RiDeleteBin6Line 
+                      onClick={() => {
+                        setDeleteModal(true);
+                        setShoppingTipsData({ id: id, title: payload.title });
+                      }}
+                    />
                   </div>
                 )}
                 <FiEye
@@ -84,6 +103,18 @@ const DelegateInfo = () => {
           />
         )}
       </div>
+      {deleteModal && (
+      <DeleteModal
+        deleteTitle={"Delegate"}
+        deleteItem={"delegates info"}
+        onClickDelete={() => {
+          handleDelete(shoppingTipsData.id);
+          setDeleteModal(false);
+        }}
+        onClickClose={() => setDeleteModal(false)}
+        isLoading={isDeletingShoppingTips}
+      />
+    )}
     </div>
   );
 };
