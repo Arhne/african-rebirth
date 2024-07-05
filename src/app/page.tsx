@@ -108,7 +108,7 @@ const DelegateInfo = () => {
       {!!deleteModal && (
       <DeleteModal
         deleteTitle={"Delegate"}
-        deleteItem={"delegates info"}
+        deleteItem={`${deleteModal.firstname} ${deleteModal.lastname}`}
         onClickDelete={() => {
           handleDelete(deleteModal.id);
         }}
