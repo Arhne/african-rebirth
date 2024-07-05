@@ -9,7 +9,7 @@ import axios, {
 
 axios.interceptors.request.use(
   async (config) => {
-    const token = getPreloadedState()!.auth.access_token;
+    const token = getPreloadedState()?.auth.access_token;
     config.headers = {
       ...config.headers,
       Authorization: `Bearer ${token}`,
