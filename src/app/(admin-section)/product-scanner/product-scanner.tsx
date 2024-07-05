@@ -13,10 +13,10 @@ export const ProductScanner: React.FC = () => {
 	};
 
 	const handleError = (error: any) => {
-		toast.error("Something went wrong please try again", {
-			hideProgressBar: true,
-			draggable: true
-		})
+		// toast.error("Something went wrong please try again", {
+		// 	hideProgressBar: true,
+		// 	draggable: true
+		// })
 	};
 
 	return (
