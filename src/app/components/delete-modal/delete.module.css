@@ -39,7 +39,7 @@
         line-height: 20px;
         font-weight: 400;
         color: var(--theme-black-800);
-        span {
+        .spanBody {
           font-weight: 600;
         }
       }
@@ -60,7 +60,7 @@
           color: var(--theme-primary-900);
           background: var(--theme-primary-200);
         }
-        .button {
+        .buttonBody {
           width: 100%;
           text-align: center;
           padding: 7px 10px;
@@ -68,8 +68,8 @@
           font-size: 14px;
           line-height: 20px;
           font-weight: 600;
-          color: var(--theme-white);
-          background: var(--theme-primary-900);
+          color: var(--theme-green-800);
+          background: var(--theme-white);
         }
       }
     }

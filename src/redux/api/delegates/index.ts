@@ -36,11 +36,11 @@ const delegatesApi = baseApi.injectEndpoints({
       }),
       providesTags: [{type: tagTypes.DELEGATES}]
     }),
-    deleteDelegates: builder.mutation<Response<IDelegates>, string>({
-      query: (id) => ({
+    deleteDelegates: builder.mutation<Response<IDelegates>, {id: string}>({
+      query: (payload) => ({
         url: `/user/delete`,
         method: "DELETE",
-        data: id,
+        data: payload,
       }),
       invalidatesTags: [{type: tagTypes.DELEGATES}]
     })

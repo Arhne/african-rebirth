@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import style from "./style.module.css";
 import BarcodeScanner from "./barcode-scanner";
+import { toast } from "react-toastify";
 
 export const ProductScanner: React.FC = () => {
 	const router = useRouter();
 
 	const handleScan = (decodedText: string, decodedResult: any) => {
-		const valueObject: IDelegates = JSON.parse(decodedResult.decodedText)
-	
-		router.push(`/admin/view/${valueObject.id}`)
+		const valueObject: IDelegates = JSON.parse(decodedResult.decodedText)	
+		router.push(`/admin/view/${valueObject._id}`)
 	};
 
 	const handleError = (error: any) => {
-		//console.error("Scan error:", error);
+		toast.error("Something went wrong please try again", {
+			hideProgressBar: true,
+			draggable: true
+		})
 	};
 
 	return (

@@ -7,7 +7,7 @@ interface IDelegatesPayload {
 }
 
 interface IDelegates {
-  id: string;
+  _id: string;
   firstname: string;
   passport: string;
   qrcode: string;

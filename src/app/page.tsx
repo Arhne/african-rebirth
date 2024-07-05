@@ -26,7 +26,7 @@ const DelegateInfo = () => {
   const adminValue = isAdmin()
   const handleViewDelegate = (detail: IDelegates) => {
     if(adminValue) {
-      router.push(`/admin/add/${detail.id}`);
+      router.push(`/admin/add/${detail._id}`);
     } else {
       router.push('/sign-in')
     }
@@ -40,8 +40,11 @@ const DelegateInfo = () => {
     );
   }
 
-  const handleDelete = (id: any) => {
-    deleteDelegates(id)
+  const handleDelete = (id: string) => {
+    const payload = {
+      id: id
+    }
+    deleteDelegates(payload)
       .unwrap()
       .then((result) => {
         toast.success("delete successful");
@@ -110,7 +113,7 @@ const DelegateInfo = () => {
         deleteTitle={"Delegate"}
         deleteItem={`${deleteModal.firstname} ${deleteModal.lastname}`}
         onClickDelete={() => {
-          handleDelete(deleteModal.id);
+          handleDelete(deleteModal._id);
         }}
         onClickClose={() => setDeleteModal(null)}
         isLoading={isDeleting}

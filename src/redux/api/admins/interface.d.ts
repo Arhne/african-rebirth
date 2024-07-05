@@ -5,7 +5,7 @@ interface ILogin {
 
 interface ILoginResponse {
   token: string;
-  id: string;
+  _id: string;
   firstname: string;
   image: string;
   qrcode: string;
