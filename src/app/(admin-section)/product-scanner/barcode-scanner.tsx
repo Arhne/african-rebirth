@@ -23,8 +23,8 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError }) => {
 		);
 
 		const handleScan = (decodedText: string, decodedResult: any) => {
-			setShouldScan(false); // Stop scanning after first successful scan
 			onScan(decodedText, decodedResult);
+			setShouldScan(false); // Stop scanning after first successful scan
 		};
 
 		html5QrcodeScanner.render(handleScan, onError);
